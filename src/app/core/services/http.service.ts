@@ -8,7 +8,7 @@ import { Config } from '../config/config';
 })
 export class HttpService {
 
-  request: string = Config.urlBase + `api_key=${Config.demo_key}`
+  request: string = Config.urlBase + `?api_key=${Config.demo_key}`
   constructor(private http: HttpClient) { }
 
   public getMethod(url: any, options?: any): Observable<any>  {

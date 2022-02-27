@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
-    path: 'detail',
+    path: 'detail/:date',
     loadChildren: () => import('./pages/detail/detail.module').then(m => m.DetailModule)
   },
 ];

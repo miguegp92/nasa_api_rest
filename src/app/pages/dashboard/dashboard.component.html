@@ -1,1 +1,17 @@
 <p>dashboard works!</p>
+
+<div *ngFor="let item of historial">
+    <div>
+        <a href="#"
+        [routerLink]="['/detail', item.date]">
+        {{ item.title }}
+        </a>
+    </div>
+    <div>
+        <img src="{{ item.url }}">
+    </div>
+    <div>{{ item.date }}</div>
+</div>
+<!-- <pre>
+    {{ historial | json}}
+</pre> -->
