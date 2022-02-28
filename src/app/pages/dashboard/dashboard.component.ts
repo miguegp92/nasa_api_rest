@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { Nasa } from '../../core/config/request.model'
 
 import { Config } from 'src/app/core/config/config';
+import {  Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,8 +14,9 @@ export class DashboardComponent implements OnInit {
 
   today: string = moment().format(Config.dateFormat);
   sixDaysBefore: Array<string> = [];
-  historial: Array<Nasa> = []
-  constructor(private _dashboardService: DashboardService) {
+  historial: Array<Nasa> = [];
+  loading: boolean = true;
+  constructor(private _dashboardService: DashboardService, private router: Router) {
 
   }
   public ngOnInit(): void {
@@ -35,22 +37,23 @@ export class DashboardComponent implements OnInit {
       this.sixDaysBefore.push(date)
     }
   }
+
+  redirectTo(dateElement: string){
+    this.router.navigate(['/detail', dateElement]);
+  }
+
   private getHistorialFromNasa() {
-    // &start_date=2022-02-21&end_date=2022-02-26
+    this.loading = true;
     const end_date = this.sixDaysBefore[0];
     const start_date = this.sixDaysBefore[this.sixDaysBefore.length - 1];
     const url = this._dashboardService.request.concat('&start_date=' + start_date + '&end_date=' + end_date)
     this._dashboardService.getHistorial(url).subscribe(
       {
-        next: (data: any) => this.historial = data,
+        next: (data: any) => this.historial = data.reverse(),
         error: (e) => console.error(e),
-        complete: () => console.info('complete')
+        complete: () => this.loading = false
       }
-      //   data => {
-      //   this.apod = data;
-      // }, (error: any) => {
-      //   console.error(error)
-      // }
+
     )
 
   }

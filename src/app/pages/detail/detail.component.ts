@@ -10,7 +10,7 @@ import { DetailService } from './detail.service';
 export class DetailComponent implements OnInit {
 
   dateImage: string = '';
-  apod: Nasa | undefined;
+  apod: any;
   constructor(private _detailService: DetailService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -18,6 +18,9 @@ export class DetailComponent implements OnInit {
     this.getDataFromNasa();
   }
 
+  goBack(){
+    window.history.back();
+  }
   getDataFromNasa(): void {
     const url = this._detailService.request.concat('&date=' + this.dateImage)
     this._detailService.getData(url).subscribe(

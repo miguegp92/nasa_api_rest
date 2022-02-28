@@ -1,4 +1,16 @@
-<p>detail works!</p>
-<pre>
-    {{ apod | json}}
-</pre>
+<a href="#" (click)="goBack()">
+    Volver atrás
+</a>
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ apod.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{ apod.url }}" alt="{{ apod.title }}">
+    <mat-card-content>
+      <p>
+        {{ apod.explanation }}
+      </p>
+    </mat-card-content>
+
+  </mat-card>

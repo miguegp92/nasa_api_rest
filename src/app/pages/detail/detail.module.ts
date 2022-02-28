@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DetailService } from './detail.service';
 import { DetailComponent } from './detail.component';
+import { MatCardModule } from '@angular/material/card';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +16,7 @@ const routes: Routes = [
   declarations: [DetailComponent],
   imports: [
     CommonModule,
+    MatCardModule,
     RouterModule.forChild(routes)
   ],
   providers: [DetailService],

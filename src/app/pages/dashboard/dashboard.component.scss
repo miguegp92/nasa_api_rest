@@ -1,0 +1,40 @@
+
+.nasa-card {
+    width: 400px;
+    height: 300px;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    &:hover {
+        background-color: #BCDFF5;
+    }
+  }
+
+  .nasa-card img {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    
+  }
+  .nasa-card a {
+      color: #1976d2;
+      text-decoration: none;
+      &:hover{
+          text-decoration: underline ;
+      }
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .spinner{
+      margin: auto;
+      position: absolute;
+      top: 50%;
+    right: 50%;
+  }
