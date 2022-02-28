@@ -16,6 +16,13 @@ export class DashboardComponent implements OnInit {
   sixDaysBefore: Array<string> = [];
   historial: Array<Nasa> = [];
   loading: boolean = true;
+  colsGrid: number = 3;
+  gridByBreakpoint = {
+    md: 3,
+    sm: 2,
+    xs: 1
+  }
+
   constructor(private _dashboardService: DashboardService, private router: Router) {
 
   }
@@ -27,7 +34,8 @@ export class DashboardComponent implements OnInit {
   public inicialize() {
     this.buildDashboard()
     // this.historial = this._dashboardService.getHistorial().reverse()
-    this.getHistorialFromNasa()
+    this.getHistorialFromNasa();
+    
   }
   private buildDashboard(): void {
 
@@ -36,6 +44,10 @@ export class DashboardComponent implements OnInit {
 
       this.sixDaysBefore.push(date)
     }
+  }
+
+  onResize(event: any) {
+    this.colsGrid = (event.target.innerWidth <= 700) ? 1 : 3;
   }
 
   redirectTo(dateElement: string){

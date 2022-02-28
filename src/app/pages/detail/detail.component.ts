@@ -11,6 +11,7 @@ export class DetailComponent implements OnInit {
 
   dateImage: string = '';
   apod: any;
+  loading: boolean = true;
   constructor(private _detailService: DetailService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -22,12 +23,13 @@ export class DetailComponent implements OnInit {
     window.history.back();
   }
   getDataFromNasa(): void {
+    this.loading = true;
     const url = this._detailService.request.concat('&date=' + this.dateImage)
     this._detailService.getData(url).subscribe(
       {
         next: (data) => this.apod = data,
         error: (e) => console.error(e),
-        complete: () => console.info('complete')
+        complete: () => this.loading = false
       }
       //   data => {
       //   this.apod = data;

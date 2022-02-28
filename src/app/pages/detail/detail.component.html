@@ -1,8 +1,8 @@
 <a href="#" (click)="goBack()">
     Volver atrás
 </a>
-
-<mat-card class="example-card">
+<mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
+<mat-card class="example-card"  *ngIf="!loading">
     <mat-card-header>
       <mat-card-title>{{ apod.title }}</mat-card-title>
     </mat-card-header>

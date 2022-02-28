@@ -1,5 +1,5 @@
 <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
-<mat-grid-list cols="3"  *ngIf="!loading">
+<mat-grid-list [cols]="colsGrid"  *ngIf="!loading" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let item of historial">
         <mat-card  class="nasa-card" (click)="redirectTo(item.date)">
             <mat-card-header>
